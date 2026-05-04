@@ -2,6 +2,7 @@
 import express from "express";
 import { google } from "googleapis";
 import rateLimit from "express-rate-limit";
+import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
