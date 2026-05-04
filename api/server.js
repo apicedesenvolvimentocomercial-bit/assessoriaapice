@@ -29,8 +29,8 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: "v4", auth });
 
 function validate(body) {
-  const { nome, telefone, faturamento } = body;
-  if (!nome || !telefone || !faturamento) return "Campos obrigatórios faltando.";
+  const { nome, nome_clinica, telefone, faturamento } = body;
+  if (!nome || !telefone || !faturamento || !nome_clinica || !faturamento) return "Campos obrigatórios faltando.";
   if (typeof telefone !== "string" || !/^\d{10,11}$/.test(telefone.replace(/\D/g, "")))
     return "Telefone inválido.";
   if (isNaN(Number(faturamento))) return "Faturamento inválido.";
@@ -41,7 +41,7 @@ app.post("/api/lead", limiter, async (req, res) => {
   const erro = validate(req.body);
   if (erro) return res.status(400).json({ error: erro });
 
-  const { nome, telefone, faturamento } = req.body;
+  const { nome, nome_clinica, telefone, faturamento } = req.body;
 
   try {
     await sheets.spreadsheets.values.append({
@@ -49,7 +49,7 @@ app.post("/api/lead", limiter, async (req, res) => {
       range: "Página1!A:D",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[nome, telefone, faturamento, new Date().toLocaleString("pt-BR")]],
+        values: [[ nome, nome_clinica, telefone, faturamento, new Date().toLocaleString("pt-BR")]],
       },
     });
 

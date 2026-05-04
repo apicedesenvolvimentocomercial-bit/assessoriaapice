@@ -174,10 +174,35 @@ function PillarCard({
 function Index() {
   useReveal();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    const formData = new FormData(e.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+
+    try {
+      setLoading(true);
+      setError(null);
+
+      const res = await fetch("https://assessoriaapice-production.up.railway.app/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Erro ao enviar.");
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const pains = [
