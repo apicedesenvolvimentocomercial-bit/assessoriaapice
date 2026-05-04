@@ -29,11 +29,10 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: "v4", auth });
 
 function validate(body) {
-  const { nome, nome_clinica, telefone, faturamento } = body;
-  if (!nome || !telefone || !faturamento || !nome_clinica || !faturamento) return "Campos obrigatórios faltando.";
-  if (typeof telefone !== "string" || !/^\d{10,11}$/.test(telefone.replace(/\D/g, "")))
-    return "Telefone inválido.";
-  if (isNaN(Number(faturamento))) return "Faturamento inválido.";
+  const { name, clinic, city, whatsapp } = body;
+  if (!name || !clinic || !city || !whatsapp) return "Campos obrigatórios faltando.";
+  if (typeof whatsapp !== "string" || !/^\d{10,11}$/.test(whatsapp.replace(/\D/g, "")))
+    return "WhatsApp inválido.";
   return null;
 }
 
@@ -41,15 +40,15 @@ app.post("/api/lead", limiter, async (req, res) => {
   const erro = validate(req.body);
   if (erro) return res.status(400).json({ error: erro });
 
-  const { nome, nome_clinica, telefone, faturamento } = req.body;
+  const { name, clinic, city, whatsapp, revenue } = req.body;
 
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: "Página1!A:E",
+      range: "Página1!A:F",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[ nome, nome_clinica, telefone, faturamento, new Date().toLocaleString("pt-BR")]],
+        values: [[name, clinic, city, whatsapp, revenue || "-", new Date().toLocaleString("pt-BR")]],
       },
     });
 
@@ -59,6 +58,7 @@ app.post("/api/lead", limiter, async (req, res) => {
     res.status(500).json({ error: "Erro ao salvar dados." });
   }
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
