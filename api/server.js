@@ -46,7 +46,7 @@ app.post("/api/lead", limiter, async (req, res) => {
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: "Página1!A:D",
+      range: "Página1!A:E",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [[ nome, nome_clinica, telefone, faturamento, new Date().toLocaleString("pt-BR")]],
