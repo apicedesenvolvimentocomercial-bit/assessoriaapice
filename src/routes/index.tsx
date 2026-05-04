@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Clínicas de estética em Curitiba crescem 20–40% de faturamento em 90 dias com a ÁPICE. Diagnóstico, atendimento, automação e tráfego — ou você não paga fee de performance.",
+          "Clínicas de estética em Curitiba crescem 20–40% de faturamento em 90 dias com a ÁPICE. Diagnóstico, atendimento, automação e tráfego",
       },
       { property: "og:title", content: "ÁPICE — Desenvolvimento Comercial para Clínicas de Estética" },
       {
@@ -237,9 +237,6 @@ function Index() {
               Sua clínica cresce
               <span className="block">
                 <span className="text-[var(--gold)] italic">20–40%</span> em 90 dias.
-              </span>
-              <span className="block text-[var(--text-secondary)] font-display italic text-3xl md:text-4xl mt-4">
-                ou você não paga.
               </span>
             </h1>
             <p
@@ -567,8 +564,8 @@ function Index() {
             <a href="https://instagram.com/apice.comercial" className="block hover:text-[var(--gold)] transition-colors">
               @apice.comercial
             </a>
-            <a href="https://wa.me/5541999999999" className="block hover:text-[var(--gold)] transition-colors">
-              WhatsApp · (41) 9 9999-9999
+            <a href="https://wa.me/554195173900" className="block hover:text-[var(--gold)] transition-colors">
+              WhatsApp · (41) 9 9517-3900
             </a>
             <div>Curitiba, PR · Brasil</div>
           </div>
@@ -580,7 +577,7 @@ function Index() {
 
       {/* WHATSAPP FLOAT */}
       <a
-        href="https://wa.me/5541999999999"
+        href="https://wa.me/554195173900"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fale com a ÁPICE no WhatsApp"
