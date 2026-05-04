@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
+app.use(cors({ origin: process.env.FRONTEND_URL || "*" }));
 app.use(express.json());
 
 const limiter = rateLimit({
@@ -43,7 +45,7 @@ app.post("/api/lead", limiter, async (req, res) => {
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: "Sheet1!A:D",
+      range: "Página1!A:D",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [[nome, telefone, faturamento, new Date().toLocaleString("pt-BR")]],
