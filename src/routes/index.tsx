@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
+
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
@@ -176,9 +177,12 @@ function Index() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const isSubmitting = useRef(false);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isSubmitting.current) return;
+    isSubmitting.current = true;
 
     const formData = new FormData(e.currentTarget);
     const values = Object.fromEntries(formData.entries());
@@ -194,7 +198,6 @@ function Index() {
       });
 
       const data = await res.json();
-
       if (!res.ok) throw new Error(data.error || "Erro ao enviar.");
 
       setSubmitted(true);
@@ -202,6 +205,7 @@ function Index() {
       setError(err.message);
     } finally {
       setLoading(false);
+      isSubmitting.current = false;
     }
   };
 
