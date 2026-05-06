@@ -560,12 +560,18 @@ function Index() {
                   <Field label="WhatsApp" name="whatsapp" type="tel" required placeholder="(41) 9 9999-9999" />
                 </div>
                 <Field label="Faturamento mensal estimado (opcional)" name="revenue" />
+                {error && (
+                  <p className="text-red-400 text-sm text-center border border-red-400/20 bg-red-400/5 rounded-lg py-3 px-4">
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
+                  disabled={loading}
                   className="btn-cta w-full inline-flex items-center justify-center gap-2 bg-[var(--gold)] text-[var(--bg-primary)] font-medium px-8 py-5 rounded-full hover:bg-[var(--gold-light)] transition-colors text-lg mt-4"
                 >
-                  Quero meu diagnóstico gratuito
-                  <span>→</span>
+                  {loading ? "Enviando..." : "Quero meu diagnóstico gratuito"}
+                  {!loading && <span>→</span>}
                 </button>
                 <p className="text-center text-sm text-[var(--text-muted)] pt-2">
                   Atendemos um número limitado de clínicas por vez para garantir qualidade.
