@@ -29,16 +29,28 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: "v4", auth });
 
 function validate(body) {
-  const { name, clinic, city, whatsapp } = body;
-  if (!name || !clinic || !city || !whatsapp) return "Campos obrigatórios faltando.";
-  if (typeof whatsapp !== "string" || !/^\d{10,11}$/.test(whatsapp.replace(/\D/g, "")))
-    return "WhatsApp inválido.";
-  return null;
+  const { name, clinic, city, whatsapp, revenue } = body;
+  if (!name || !clinic || !city || !whatsapp) {
+    return {"ok": false, "message": "Campos obrigatórios faltando."};
+  }
+  
+  if (name.trim().split(/\s+/).length < 2)
+    return { ok: false, message: "Informe seu nome completo." };
+
+  const digits = whatsapp.replace(/\D/g, "");
+  if (!/^\d{10,11}$/.test(digits))
+    return { ok: false, message: "WhatsApp inválido. Informe com DDD (ex: 41 9 9999-9999)." };
+
+  if (revenue && isNaN(Number(revenue.replace(/[R$.\s]/g, "").replace(",", "."))))
+
+    return { ok: false, message: "Faturamento inválido. Informe apenas o valor (ex: 15000)." };
+
+  return {"ok": true};
 }
 
 app.post("/api/lead", limiter, async (req, res) => {
   const erro = validate(req.body);
-  if (erro) return res.status(400).json({ error: erro });
+  if (!erro.ok) return res.status(400).json({ error: erro.message });
 
   const { name, clinic, city, whatsapp, revenue } = req.body;
 

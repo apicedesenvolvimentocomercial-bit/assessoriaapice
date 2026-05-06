@@ -265,7 +265,9 @@ function Index() {
             <h1 className="reveal text-5xl md:text-7xl lg:text-[5.5rem] mb-8" data-delay="120">
               Sua clínica cresce
               <span className="block">
-                <span className="text-[var(--gold)] italic">20–40%</span> em 90 dias.
+                em
+                <span className="text-[var(--gold)] italic"> 90 </span>
+                dias.
               </span>
             </h1>
             <p
