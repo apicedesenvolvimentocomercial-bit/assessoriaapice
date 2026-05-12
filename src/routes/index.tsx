@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-
+import ApiceLogoIcon from "@/components/icons/ApiceLogo";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -12,7 +12,10 @@ export const Route = createFileRoute("/")({
         content:
           "Clínicas de estética em Curitiba crescem 20–40% de faturamento em 90 dias com a ÁPICE. Diagnóstico, atendimento, automação e tráfego",
       },
-      { property: "og:title", content: "ÁPICE — Desenvolvimento Comercial para Clínicas de Estética" },
+      {
+        property: "og:title",
+        content: "ÁPICE — Desenvolvimento Comercial para Clínicas de Estética",
+      },
       {
         property: "og:description",
         content:
@@ -39,7 +42,7 @@ function useReveal() {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -70,7 +73,7 @@ function useCounter(target: number, suffix = "", duration = 1600) {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
     io.observe(node);
     return () => io.disconnect();
@@ -95,7 +98,13 @@ function GuaranteeBadge({ small = false }: { small?: boolean }) {
           strokeWidth="1.5"
           strokeLinejoin="round"
         />
-        <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M9 12l2 2 4-4"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
       <span className="tracking-wider uppercase text-[var(--gold)] font-medium">
         Garantia de Performance · 90 dias
@@ -128,11 +137,19 @@ function MetricCard({
       data-delay={delay}
     >
       <div className="flex items-baseline gap-3 md:gap-5 flex-wrap">
-        <span ref={before.ref} className="number-display text-3xl md:text-4xl text-[var(--text-muted)] line-through decoration-1">
+        <span
+          ref={before.ref}
+          className="number-display text-3xl md:text-4xl text-[var(--text-muted)] line-through decoration-1"
+        >
           {before.display}
         </span>
         <svg width="24" height="14" viewBox="0 0 24 14" fill="none" className="text-[var(--gold)]">
-          <path d="M0 7h22M16 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <path
+            d="M0 7h22M16 1l6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
         </svg>
         <span
           ref={after.ref}
@@ -142,7 +159,9 @@ function MetricCard({
           {after.display}
         </span>
       </div>
-      <p className="mt-5 text-sm uppercase tracking-[0.18em] text-[var(--text-secondary)]">{label}</p>
+      <p className="mt-5 text-sm uppercase tracking-[0.18em] text-[var(--text-secondary)]">
+        {label}
+      </p>
     </div>
   );
 }
@@ -219,10 +238,26 @@ function Index() {
   ];
 
   const pillars = [
-    { n: "01", t: "Diagnóstico Comercial", d: "Mapeamos onde está o gargalo antes de qualquer ação." },
-    { n: "02", t: "Estrutura de Atendimento", d: "Sua equipe converte leads com consistência — não por sorte." },
-    { n: "03", t: "Automação Inteligente", d: "Tecnologia que trabalha pela clínica enquanto você está em procedimento." },
-    { n: "04", t: "Tráfego Estratégico", d: "Só ativamos anúncios quando o funil está pronto para converter." },
+    {
+      n: "01",
+      t: "Diagnóstico Comercial",
+      d: "Mapeamos onde está o gargalo antes de qualquer ação.",
+    },
+    {
+      n: "02",
+      t: "Estrutura de Atendimento",
+      d: "Sua equipe converte leads com consistência — não por sorte.",
+    },
+    {
+      n: "03",
+      t: "Automação Inteligente",
+      d: "Tecnologia que trabalha pela clínica enquanto você está em procedimento.",
+    },
+    {
+      n: "04",
+      t: "Tráfego Estratégico",
+      d: "Só ativamos anúncios quando o funil está pronto para converter.",
+    },
     { n: "05", t: "Gestão por Dados", d: "Você decide com números reais — não com intuição." },
   ];
 
@@ -238,12 +273,14 @@ function Index() {
       {/* NAV */}
       <header className="relative z-20 px-6 md:px-10 py-6 flex items-center justify-between max-w-[1200px] mx-auto">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full border border-[var(--gold)] flex items-center justify-center">
-            <span className="font-display text-[var(--gold)] text-lg leading-none">Á</span>
+          <div className="flex items-center justify-center">
+            <ApiceLogoIcon size={40} />
           </div>
           <div className="leading-tight">
             <div className="font-display text-xl tracking-wide">ÁPICE</div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">Curitiba · PR</div>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
+              Curitiba · PR
+            </div>
           </div>
         </div>
         <a
@@ -274,10 +311,14 @@ function Index() {
               className="reveal text-lg md:text-xl text-[var(--text-secondary)] max-w-xl leading-relaxed mb-10"
               data-delay="240"
             >
-              Desenvolvimento comercial para clínicas de estética em Curitiba e Região Metropolitana.
-              Diagnóstico, atendimento, automação e tráfego — operando como um único sistema.
+              Desenvolvimento comercial para clínicas de estética em Curitiba e Região
+              Metropolitana. Diagnóstico, atendimento, automação e tráfego — operando como um único
+              sistema.
             </p>
-            <div className="reveal flex flex-col sm:flex-row gap-4 items-start sm:items-center" data-delay="360">
+            <div
+              className="reveal flex flex-col sm:flex-row gap-4 items-start sm:items-center"
+              data-delay="360"
+            >
               <a
                 href="#diagnostico"
                 className="btn-cta inline-flex items-center justify-center gap-2 bg-[var(--gold)] text-[var(--bg-primary)] font-medium px-8 py-4 rounded-full hover:bg-[var(--gold-light)] transition-colors"
@@ -296,17 +337,27 @@ function Index() {
                 <div className="text-xs uppercase tracking-[0.25em] text-[var(--text-muted)] mb-4">
                   Resultado médio
                 </div>
-                <div className="number-display text-7xl md:text-8xl text-[var(--gold-light)] mb-2">+34%</div>
+                <div className="number-display text-7xl md:text-8xl text-[var(--gold-light)] mb-2">
+                  +34%
+                </div>
                 <div className="text-[var(--text-secondary)] mb-8">faturamento em 90 dias</div>
                 <div className="gold-divider mb-8" />
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <div className="number-display text-3xl text-[var(--accent-green-light)]">8%</div>
-                    <div className="text-xs uppercase tracking-wider text-[var(--text-muted)] mt-1">No-show</div>
+                    <div className="number-display text-3xl text-[var(--accent-green-light)]">
+                      8%
+                    </div>
+                    <div className="text-xs uppercase tracking-wider text-[var(--text-muted)] mt-1">
+                      No-show
+                    </div>
                   </div>
                   <div>
-                    <div className="number-display text-3xl text-[var(--accent-green-light)]">28%</div>
-                    <div className="text-xs uppercase tracking-wider text-[var(--text-muted)] mt-1">Conversão</div>
+                    <div className="number-display text-3xl text-[var(--accent-green-light)]">
+                      28%
+                    </div>
+                    <div className="text-xs uppercase tracking-wider text-[var(--text-muted)] mt-1">
+                      Conversão
+                    </div>
                   </div>
                 </div>
               </div>
@@ -321,11 +372,16 @@ function Index() {
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
-            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">01 · A situação</p>
+            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
+              01 · A situação
+            </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
               Se você se reconhece em algum desses cenários...
             </h2>
-            <p className="reveal text-lg text-[var(--text-secondary)] leading-relaxed" data-delay="200">
+            <p
+              className="reveal text-lg text-[var(--text-secondary)] leading-relaxed"
+              data-delay="200"
+            >
               Você não está sozinha. E não é falta de esforço — é falta de sistema.
             </p>
           </div>
@@ -350,21 +406,38 @@ function Index() {
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36 bg-[var(--bg-secondary)]/40">
         <div className="max-w-[1200px] mx-auto grid md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
-            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">02 · Posicionamento</p>
+            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
+              02 · Posicionamento
+            </p>
             <h2 className="reveal text-4xl md:text-5xl mb-6" data-delay="100">
               Não somos uma agência genérica.
             </h2>
-            <p className="reveal text-lg text-[var(--text-secondary)] leading-relaxed" data-delay="200">
-              Atuamos exclusivamente com clínicas de estética. É a única coisa que fazemos — e o motivo
-              pelo qual conseguimos garantir performance.
+            <p
+              className="reveal text-lg text-[var(--text-secondary)] leading-relaxed"
+              data-delay="200"
+            >
+              Atuamos exclusivamente com clínicas de estética. É a única coisa que fazemos — e o
+              motivo pelo qual conseguimos garantir performance.
             </p>
           </div>
           <div className="md:col-span-7 space-y-6">
             {[
-              ["Especialização absoluta", "Só clínicas de estética. Nada mais. Conhecemos o ticket, o ciclo, a sazonalidade, o perfil da paciente."],
-              ["Método integrado", "Não é só tráfego. Não é só automação. É o conjunto operando como um único sistema comercial."],
-              ["Garantia de performance", "Não entregou resultado em 90 dias? Não cobramos fee de performance. Sem letras miúdas."],
-              ["Presença local em Curitiba", "Conhecemos o mercado, a concorrência e a paciente da Região Metropolitana."],
+              [
+                "Especialização absoluta",
+                "Só clínicas de estética. Nada mais. Conhecemos o ticket, o ciclo, a sazonalidade, o perfil da paciente.",
+              ],
+              [
+                "Método integrado",
+                "Não é só tráfego. Não é só automação. É o conjunto operando como um único sistema comercial.",
+              ],
+              [
+                "Garantia de performance",
+                "Não entregou resultado em 90 dias? Não cobramos fee de performance. Sem letras miúdas.",
+              ],
+              [
+                "Presença local em Curitiba",
+                "Conhecemos o mercado, a concorrência e a paciente da Região Metropolitana.",
+              ],
             ].map(([t, d], i) => (
               <div
                 key={t}
@@ -385,7 +458,9 @@ function Index() {
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
-            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">03 · Entrega</p>
+            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
+              03 · Entrega
+            </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
               Cinco pilares. <span className="italic text-[var(--gold)]">Um só sistema.</span>
             </h2>
@@ -394,11 +469,31 @@ function Index() {
             </p>
           </div>
           <div className="grid md:grid-cols-6 gap-5">
-            <div className="md:col-span-2"><PillarCard {...{ num: pillars[0].n, title: pillars[0].t, desc: pillars[0].d, delay: 0 }} /></div>
-            <div className="md:col-span-2"><PillarCard {...{ num: pillars[1].n, title: pillars[1].t, desc: pillars[1].d, delay: 100 }} /></div>
-            <div className="md:col-span-2"><PillarCard {...{ num: pillars[2].n, title: pillars[2].t, desc: pillars[2].d, delay: 200 }} /></div>
-            <div className="md:col-span-3"><PillarCard {...{ num: pillars[3].n, title: pillars[3].t, desc: pillars[3].d, delay: 300 }} /></div>
-            <div className="md:col-span-3"><PillarCard {...{ num: pillars[4].n, title: pillars[4].t, desc: pillars[4].d, delay: 400 }} /></div>
+            <div className="md:col-span-2">
+              <PillarCard
+                {...{ num: pillars[0].n, title: pillars[0].t, desc: pillars[0].d, delay: 0 }}
+              />
+            </div>
+            <div className="md:col-span-2">
+              <PillarCard
+                {...{ num: pillars[1].n, title: pillars[1].t, desc: pillars[1].d, delay: 100 }}
+              />
+            </div>
+            <div className="md:col-span-2">
+              <PillarCard
+                {...{ num: pillars[2].n, title: pillars[2].t, desc: pillars[2].d, delay: 200 }}
+              />
+            </div>
+            <div className="md:col-span-3">
+              <PillarCard
+                {...{ num: pillars[3].n, title: pillars[3].t, desc: pillars[3].d, delay: 300 }}
+              />
+            </div>
+            <div className="md:col-span-3">
+              <PillarCard
+                {...{ num: pillars[4].n, title: pillars[4].t, desc: pillars[4].d, delay: 400 }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -407,21 +502,48 @@ function Index() {
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36 bg-[var(--bg-secondary)]/40">
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
-            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">04 · Prova</p>
+            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
+              04 · Prova
+            </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
-              Clínicas reais em Curitiba. <span className="italic text-[var(--gold)]">Dados reais.</span>
+              Clínicas reais em Curitiba.{" "}
+              <span className="italic text-[var(--gold)]">Dados reais.</span>
             </h2>
-            <p className="reveal text-[var(--text-secondary)] leading-relaxed text-lg" data-delay="200">
-              Não divulgamos nomes por confidencialidade — mas conectamos você diretamente com clientes
-              para conversar sem filtro.
+            <p
+              className="reveal text-[var(--text-secondary)] leading-relaxed text-lg"
+              data-delay="200"
+            >
+              Não divulgamos nomes por confidencialidade — mas conectamos você diretamente com
+              clientes para conversar sem filtro.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-16">
             <MetricCard from={22} to={8} suffix="%" label="No-show em 60 dias" inverse delay={0} />
-            <MetricCard from={15} to={28} suffix="%" label="Conversão de leads em 90 dias" inverse delay={120} />
-            <MetricCard from={0} to={34} suffix="%" label="Crescimento médio de faturamento" inverse delay={240} />
-            <MetricCard from={60} to={5} suffix="min" label="Tempo de resposta ao lead" inverse delay={360} />
+            <MetricCard
+              from={15}
+              to={28}
+              suffix="%"
+              label="Conversão de leads em 90 dias"
+              inverse
+              delay={120}
+            />
+            <MetricCard
+              from={0}
+              to={34}
+              suffix="%"
+              label="Crescimento médio de faturamento"
+              inverse
+              delay={240}
+            />
+            <MetricCard
+              from={60}
+              to={5}
+              suffix="min"
+              label="Tempo de resposta ao lead"
+              inverse
+              delay={360}
+            />
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -435,8 +557,12 @@ function Index() {
                 data-delay={i * 120}
               >
                 <div className="font-display text-4xl text-[var(--gold)] leading-none mb-4">"</div>
-                <p className="text-lg text-[var(--text-primary)] italic leading-relaxed mb-6">{q}</p>
-                <p className="text-sm uppercase tracking-wider text-[var(--text-muted)]">— Dona de Clínica, Curitiba</p>
+                <p className="text-lg text-[var(--text-primary)] italic leading-relaxed mb-6">
+                  {q}
+                </p>
+                <p className="text-sm uppercase tracking-wider text-[var(--text-muted)]">
+                  — Dona de Clínica, Curitiba
+                </p>
               </div>
             ))}
           </div>
@@ -447,7 +573,9 @@ function Index() {
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
-            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">05 · Caminho</p>
+            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
+              05 · Caminho
+            </p>
             <h2 className="reveal text-4xl md:text-6xl" data-delay="100">
               Como trabalhamos.
             </h2>
@@ -471,7 +599,9 @@ function Index() {
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36 bg-[var(--bg-secondary)]/40">
         <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-8">
           <div className="reveal border border-[var(--border)] rounded-xl p-10 bg-[var(--bg-secondary)] gold-glow">
-            <div className="text-[var(--gold)] text-sm uppercase tracking-[0.25em] mb-4">É para você</div>
+            <div className="text-[var(--gold)] text-sm uppercase tracking-[0.25em] mb-4">
+              É para você
+            </div>
             <h3 className="text-3xl mb-8">A ÁPICE é para você se:</h3>
             <ul className="space-y-5">
               {[
@@ -487,8 +617,13 @@ function Index() {
               ))}
             </ul>
           </div>
-          <div className="reveal border border-[var(--border-subtle)] rounded-xl p-10 bg-[var(--bg-secondary)]/40" data-delay="120">
-            <div className="text-[var(--text-muted)] text-sm uppercase tracking-[0.25em] mb-4">Não é para você</div>
+          <div
+            className="reveal border border-[var(--border-subtle)] rounded-xl p-10 bg-[var(--bg-secondary)]/40"
+            data-delay="120"
+          >
+            <div className="text-[var(--text-muted)] text-sm uppercase tracking-[0.25em] mb-4">
+              Não é para você
+            </div>
             <h3 className="text-3xl mb-8 text-[var(--text-secondary)]">Não trabalhamos com:</h3>
             <ul className="space-y-5">
               {[
@@ -512,10 +647,13 @@ function Index() {
           <div className="relative rounded-2xl border border-[var(--gold)] bg-gradient-to-br from-[var(--gold-dim)] to-transparent p-12 md:p-16 text-center overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_0%,var(--gold),transparent_60%)]" />
             <div className="relative">
-              <div className="inline-block mb-8"><GuaranteeBadge /></div>
+              <div className="inline-block mb-8">
+                <GuaranteeBadge />
+              </div>
               <p className="font-display text-3xl md:text-5xl leading-tight text-[var(--text-primary)] mb-6">
                 "Se você implementar o que estruturamos e não tiver resultado nos primeiros{" "}
-                <span className="text-[var(--gold)] italic">90 dias</span>, não cobramos fee de performance."
+                <span className="text-[var(--gold)] italic">90 dias</span>, não cobramos fee de
+                performance."
               </p>
               <p className="text-[var(--text-secondary)] text-lg">
                 Sem letras miúdas. Sem desculpas.
@@ -526,24 +664,45 @@ function Index() {
       </section>
 
       {/* FORMULÁRIO */}
-      <section id="diagnostico" className="relative z-10 px-6 md:px-10 py-24 md:py-36 bg-[var(--bg-secondary)]/60">
+      <section
+        id="diagnostico"
+        className="relative z-10 px-6 md:px-10 py-24 md:py-36 bg-[var(--bg-secondary)]/60"
+      >
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-12">
-            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">Diagnóstico gratuito</p>
+            <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
+              Diagnóstico gratuito
+            </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
-              Quer saber onde está o <span className="italic text-[var(--gold)]">gargalo</span> da sua clínica?
+              Quer saber onde está o <span className="italic text-[var(--gold)]">gargalo</span> da
+              sua clínica?
             </h2>
             <p className="reveal text-lg text-[var(--text-secondary)]" data-delay="200">
               O diagnóstico é gratuito. Dura 30 minutos. Sem compromisso.
             </p>
           </div>
 
-          <div className="reveal border border-[var(--border)] rounded-2xl bg-[var(--bg-primary)] p-8 md:p-12 gold-glow" data-delay="200">
+          <div
+            className="reveal border border-[var(--border)] rounded-2xl bg-[var(--bg-primary)] p-8 md:p-12 gold-glow"
+            data-delay="200"
+          >
             {submitted ? (
               <div className="text-center py-12">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full border border-[var(--gold)] flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-[var(--gold)]">
-                    <path d="M5 12l5 5L20 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="text-[var(--gold)]"
+                  >
+                    <path
+                      d="M5 12l5 5L20 7"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </div>
                 <h3 className="text-3xl mb-4">Recebemos sua solicitação.</h3>
@@ -557,7 +716,13 @@ function Index() {
                   <Field label="Seu nome" name="name" required />
                   <Field label="Nome da clínica" name="clinic" required />
                   <Field label="Cidade" name="city" required defaultValue="Curitiba" />
-                  <Field label="WhatsApp" name="whatsapp" type="tel" required placeholder="(41) 9 9999-9999" />
+                  <Field
+                    label="WhatsApp"
+                    name="whatsapp"
+                    type="tel"
+                    required
+                    placeholder="(41) 9 9999-9999"
+                  />
                 </div>
                 <Field label="Faturamento mensal estimado (opcional)" name="revenue" />
                 {error && (
@@ -587,8 +752,8 @@ function Index() {
         <div className="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-9 h-9 rounded-full border border-[var(--gold)] flex items-center justify-center">
-                <span className="font-display text-[var(--gold)] text-lg leading-none">Á</span>
+              <div className="flex items-center justify-center">
+                <ApiceLogoIcon size={40} />
               </div>
               <span className="font-display text-xl">ÁPICE</span>
             </div>
@@ -597,17 +762,27 @@ function Index() {
             </p>
           </div>
           <div className="text-sm text-[var(--text-secondary)] space-y-2">
-            <div className="text-[var(--text-muted)] uppercase tracking-wider text-xs mb-3">Contato</div>
-            <a href="https://instagram.com/apice.comercial" className="block hover:text-[var(--gold)] transition-colors">
+            <div className="text-[var(--text-muted)] uppercase tracking-wider text-xs mb-3">
+              Contato
+            </div>
+            <a
+              href="https://instagram.com/apice.comercial"
+              className="block hover:text-[var(--gold)] transition-colors"
+            >
               @apice.comercial
             </a>
-            <a href="https://wa.me/554195173900" className="block hover:text-[var(--gold)] transition-colors">
+            <a
+              href="https://wa.me/554195173900"
+              className="block hover:text-[var(--gold)] transition-colors"
+            >
               WhatsApp · (41) 9 9517-3900
             </a>
             <div>Curitiba, PR · Brasil</div>
           </div>
           <div className="text-sm text-[var(--text-muted)] md:text-right">
-            © 2025 ÁPICE.<br />Todos os direitos reservados.
+            © 2025 ÁPICE.
+            <br />
+            Todos os direitos reservados.
           </div>
         </div>
       </footer>
