@@ -9,14 +9,21 @@ interface ApiceLogoIconProps {
   size?: number | string;
   className?: string;
   style?: React.CSSProperties;
+  /** Cor de fundo do círculo interno do logo. Deve casar com o container. */
+  background?: string;
 }
 
 type Point = [number, number];
 
-export default function ApiceLogoIcon({ size, className = "", style = {} }: ApiceLogoIconProps) {
-  const A: Point = [540, 155];
-  const BL: Point = [163, 714];
-  const BR: Point = [917, 714];
+export default function ApiceLogoIcon({
+  size,
+  className = "",
+  style = {},
+  background = "#000000",
+}: ApiceLogoIconProps) {
+  const A: Point = [540, 175];
+  const BL: Point = [240, 700];
+  const BR: Point = [840, 700];
   const N = 4;
 
   const pts: Point[][] = [];
@@ -55,12 +62,11 @@ export default function ApiceLogoIcon({ size, className = "", style = {} }: Apic
   }
 
   // strokeWidth em px de tela (não escala com viewBox)
-  const SW_LINE = 0.65; // linhas da grade
-  const SW_RING = 0.6; // anel externo
-  const SW_RING2 = 0.35; // anel interno
-  const SW_STAR = 0.8; // raios da estrela
-  const R_NODE = 4; // raio dos nós (viewBox units — escala com o ícone)
-  const R_APEX = 5;
+  const SW_LINE = 0.9; // linhas da grade
+  const SW_RING = 1.1; // anel externo
+  const SW_STAR = 0.7; // raios da estrela
+  const R_NODE = 3.5; // raio dos nós
+  const R_APEX = 4;
 
   return (
     <svg
@@ -74,50 +80,34 @@ export default function ApiceLogoIcon({ size, className = "", style = {} }: Apic
       role="img"
     >
       <defs>
-        {/* Gradiente dourado — userSpaceOnUse mapeia correto em qualquer escala */}
-        <linearGradient
-          id="al-gMain"
-          gradientUnits="userSpaceOnUse"
-          x1="540"
-          y1="155"
-          x2="540"
-          y2="714"
-        >
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="10%" stopColor="#fff176" />
-          <stop offset="35%" stopColor="#fdd835" />
-          <stop offset="65%" stopColor="#f9a825" />
-          <stop offset="100%" stopColor="#e65100" />
-        </linearGradient>
-
+        {/* Dourado sólido e uniforme, fiel à referência */}
         <radialGradient
           id="al-gCenterGlow"
           cx="540"
-          cy="430"
-          r="280"
+          cy="470"
+          r="240"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0%" stopColor="#fdd835" stopOpacity="0.50" />
-          <stop offset="45%" stopColor="#f9a825" stopOpacity="0.20" />
-          <stop offset="100%" stopColor="#e65100" stopOpacity="0" />
-        </radialGradient>
-
-        <radialGradient id="al-gBg" cx="540" cy="460" r="480" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#5a3a00" stopOpacity="0.40" />
-          <stop offset="60%" stopColor="#2a1a00" stopOpacity="0.18" />
+          <stop offset="0%" stopColor="#c9a84c" stopOpacity="0.35" />
+          <stop offset="60%" stopColor="#7a5a10" stopOpacity="0.10" />
           <stop offset="100%" stopColor="#000000" stopOpacity="0" />
         </radialGradient>
 
-        {/* Glow suave nas linhas — stdDeviation pequeno para não borrar demais */}
+        <radialGradient id="al-gBg" cx="540" cy="540" r="510" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#1a1208" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#000000" stopOpacity="0" />
+        </radialGradient>
+
+        {/* Glow muito sutil */}
         <filter
           id="al-fLine"
-          x="-8%"
-          y="-8%"
-          width="116%"
-          height="116%"
+          x="-5%"
+          y="-5%"
+          width="110%"
+          height="110%"
           colorInterpolationFilters="sRGB"
         >
-          <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b" />
           <feMerge>
             <feMergeNode in="b" />
             <feMergeNode in="SourceGraphic" />
@@ -161,41 +151,29 @@ export default function ApiceLogoIcon({ size, className = "", style = {} }: Apic
       </defs>
 
       {/* Fundo */}
-      <circle cx="540" cy="540" r="508" fill="#0d0d0b" />
-      <circle cx="540" cy="540" r="508" fill="url(#al-gBg)" />
+      <circle cx="540" cy="540" r="508" fill={background} />
       <ellipse
         cx="540"
-        cy="430"
-        rx="270"
-        ry="220"
+        cy="470"
+        rx="240"
+        ry="200"
         fill="url(#al-gCenterGlow)"
         clipPath="url(#al-clip)"
       />
 
-      {/* Anéis */}
+      {/* Anel externo único e fino */}
       <circle
         cx="540"
         cy="540"
-        r="499"
+        r="500"
         fill="none"
-        stroke="#fdd835"
+        stroke="#c9a84c"
         strokeWidth={SW_RING}
-        opacity="0.85"
-        filter="url(#al-fRing)"
-        vectorEffect="non-scaling-stroke"
-      />
-      <circle
-        cx="540"
-        cy="540"
-        r="490"
-        fill="none"
-        stroke="#f9a825"
-        strokeWidth={SW_RING2}
-        opacity="0.45"
+        opacity="0.7"
         vectorEffect="non-scaling-stroke"
       />
 
-      {/* Grade triangular */}
+      {/* Grade triangular — dourado uniforme */}
       <g filter="url(#al-fLine)">
         {edges.map(([p1, p2], i) => (
           <line
@@ -204,7 +182,7 @@ export default function ApiceLogoIcon({ size, className = "", style = {} }: Apic
             y1={p1[1]}
             x2={p2[0]}
             y2={p2[1]}
-            stroke="url(#al-gMain)"
+            stroke="#c9a84c"
             strokeWidth={SW_LINE}
             strokeLinecap="round"
             vectorEffect="non-scaling-stroke"
@@ -212,53 +190,31 @@ export default function ApiceLogoIcon({ size, className = "", style = {} }: Apic
         ))}
       </g>
 
-      {/* Nós — r em viewBox units escala proporcionalmente (desejado) */}
+      {/* Nós dourados */}
       {nodes.map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r={R_NODE} fill="url(#al-gMain)" opacity="0.9" />
+        <circle key={i} cx={cx} cy={cy} r={R_NODE} fill="#d4b35a" />
       ))}
 
-      {/* Apex: estrela + ponto */}
+      {/* Apex: brilho discreto */}
       <g filter="url(#al-fApex)">
         <line
           x1={A[0]}
-          y1={A[1] - 32}
+          y1={A[1] - 18}
           x2={A[0]}
-          y2={A[1] + 32}
-          stroke="#ffffff"
+          y2={A[1] + 18}
+          stroke="#fff8d6"
           strokeWidth={SW_STAR}
           strokeLinecap="round"
           vectorEffect="non-scaling-stroke"
         />
         <line
-          x1={A[0] - 32}
+          x1={A[0] - 18}
           y1={A[1]}
-          x2={A[0] + 32}
+          x2={A[0] + 18}
           y2={A[1]}
-          stroke="#ffffff"
+          stroke="#fff8d6"
           strokeWidth={SW_STAR}
           strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
-        <line
-          x1={A[0] - 15}
-          y1={A[1] - 15}
-          x2={A[0] + 15}
-          y2={A[1] + 15}
-          stroke="#fffbe0"
-          strokeWidth={SW_STAR * 0.7}
-          strokeLinecap="round"
-          opacity="0.7"
-          vectorEffect="non-scaling-stroke"
-        />
-        <line
-          x1={A[0] + 15}
-          y1={A[1] - 15}
-          x2={A[0] - 15}
-          y2={A[1] + 15}
-          stroke="#fffbe0"
-          strokeWidth={SW_STAR * 0.7}
-          strokeLinecap="round"
-          opacity="0.7"
           vectorEffect="non-scaling-stroke"
         />
         <circle cx={A[0]} cy={A[1]} r={R_APEX} fill="#ffffff" />

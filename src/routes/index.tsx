@@ -274,7 +274,7 @@ function Index() {
       <header className="relative z-20 px-6 md:px-10 py-6 flex items-center justify-between max-w-[1200px] mx-auto">
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center">
-            <ApiceLogoIcon size={40} />
+            <ApiceLogoIcon size={40} background="var(--bg-primary)" />
           </div>
           <div className="leading-tight">
             <div className="font-display text-xl tracking-wide">ÁPICE</div>
@@ -753,7 +753,7 @@ function Index() {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <div className="flex items-center justify-center">
-                <ApiceLogoIcon size={40} />
+                <ApiceLogoIcon size={40} background="var(--bg-primary)" />
               </div>
               <span className="font-display text-xl">ÁPICE</span>
             </div>
