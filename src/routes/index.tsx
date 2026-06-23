@@ -1,25 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import ApiceLogoIcon from "@/components/icons/ApiceLogo";
+import sennoLogo from "@/assets/senno-logo.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "ÁPICE — Desenvolvimento Comercial para Clínicas de Estética em Curitiba" },
+      { title: "SENNO GROUP — Ecossistema de Desenvolvimento para Clínicas de Alto Valor" },
       {
         name: "description",
         content:
-          "Clínicas de estética em Curitiba crescem 20–40% de faturamento em 90 dias com a ÁPICE. Diagnóstico, atendimento, automação e tráfego",
+          "A SENNO GROUP integra estratégia, estrutura, performance e inteligência em um único ecossistema para transformar clínicas em negócios previsíveis, lucrativos e escaláveis.",
       },
       {
         property: "og:title",
-        content: "ÁPICE — Desenvolvimento Comercial para Clínicas de Estética",
+        content: "SENNO GROUP — Ecossistema de Desenvolvimento para Clínicas",
       },
       {
         property: "og:description",
         content:
-          "Crescimento mensurável em 90 dias para clínicas de estética em Curitiba. Garantia de performance.",
+          "Estratégia, estrutura, performance e inteligência operando como um único sistema para clínicas de alto valor.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -84,6 +84,19 @@ function useCounter(target: number, suffix = "", duration = 1600) {
 
 /* ---------- Subcomponents ---------- */
 
+function SennoMark({ size = 40 }: { size?: number }) {
+  return (
+    <img
+      src={sennoLogo.url}
+      alt="SENNO GROUP"
+      width={size}
+      height={size}
+      className="rounded-full"
+      style={{ width: size, height: size, objectFit: "cover" }}
+    />
+  );
+}
+
 function GuaranteeBadge({ small = false }: { small?: boolean }) {
   return (
     <div
@@ -107,7 +120,7 @@ function GuaranteeBadge({ small = false }: { small?: boolean }) {
         />
       </svg>
       <span className="tracking-wider uppercase text-[var(--gold)] font-medium">
-        Garantia de Performance · 90 dias
+        Crescimento mensurável · 90 dias
       </span>
     </div>
   );
@@ -229,43 +242,73 @@ function Index() {
   };
 
   const pains = [
-    "Invisto em tráfego pago mas os leads não convertem",
-    "Tenho muitos no-shows e não sei como resolver",
-    "Minha equipe não segue script — cada uma atende diferente",
-    "Não tenho clareza dos meus números",
-    "Trabalho muito, mas o lucro não cresce na mesma proporção",
-    "Já fiz curso de Instagram, curso de gestão. Nada muda de verdade",
+    "Faturamento alto, mas margem que não acompanha o esforço",
+    "Marketing rodando sem processo comercial que sustente a escala",
+    "Vendas dependentes de pessoas, não de método",
+    "Decisões tomadas por intuição, sem dados estruturados",
+    "Equipe sem padrão de atendimento e sem indicadores claros",
+    "Crescimento sem previsibilidade — meses bons seguidos de meses incertos",
   ];
 
   const pillars = [
     {
       n: "01",
-      t: "Diagnóstico Comercial",
-      d: "Mapeamos onde está o gargalo antes de qualquer ação.",
+      t: "SENNO Desenvolvimento Comercial",
+      d: "Estrutura comercial completa: closers, CRM, processos, scripts, treinamento de equipes e consultoria high ticket.",
     },
     {
       n: "02",
-      t: "Estrutura de Atendimento",
-      d: "Sua equipe converte leads com consistência — não por sorte.",
+      t: "SENNO Performance",
+      d: "Growth marketing e mídia paga com método: funis, captação qualificada, Meta Ads e Google Ads para escala de aquisição.",
     },
     {
       n: "03",
-      t: "Automação Inteligente",
-      d: "Tecnologia que trabalha pela clínica enquanto você está em procedimento.",
+      t: "SENNO Intelligence",
+      d: "BI, dashboards, métricas comerciais, IA aplicada e automação — decisões baseadas em dados, não em achismo.",
     },
     {
       n: "04",
-      t: "Tráfego Estratégico",
-      d: "Só ativamos anúncios quando o funil está pronto para converter.",
+      t: "SENNO Care",
+      d: "Customer Success e experiência do paciente: pós-venda, retenção, NPS e jornada premium fim a fim.",
     },
-    { n: "05", t: "Gestão por Dados", d: "Você decide com números reais — não com intuição." },
+    {
+      n: "05",
+      t: "SENNO Scale",
+      d: "Expansão estruturada: multiunidades, franquias, processos operacionais e crescimento sustentável.",
+    },
+    {
+      n: "06",
+      t: "SENNO Academy",
+      d: "Treinamentos, formação comercial, cursos, mentorias, eventos e certificações para clínicas e equipes.",
+    },
+    {
+      n: "07",
+      t: "SENNO Tech",
+      d: "CRM próprio, SaaS para clínicas, IA para atendimento, automação comercial e infraestrutura digital.",
+    },
   ];
 
   const steps = [
-    { n: "01", t: "Diagnóstico", d: "Entendemos o seu negócio antes de propor qualquer solução." },
-    { n: "02", t: "Estruturação", d: "Montamos o que precisa ser montado para crescer." },
-    { n: "03", t: "Ativação", d: "Ligamos os motores quando o terreno está preparado." },
-    { n: "04", t: "Acompanhamento", d: "Presença ativa todos os meses — relatório e reunião." },
+    {
+      n: "01",
+      t: "Diagnóstico",
+      d: "Análise profunda do negócio, dos números e da estrutura atual antes de qualquer recomendação.",
+    },
+    {
+      n: "02",
+      t: "Estruturação",
+      d: "Desenho do sistema comercial, operacional e de inteligência sob medida para a clínica.",
+    },
+    {
+      n: "03",
+      t: "Ativação",
+      d: "Implementação coordenada de comercial, performance, dados e operação como um único motor.",
+    },
+    {
+      n: "04",
+      t: "Governança",
+      d: "Acompanhamento contínuo, comitês mensais, indicadores e ajustes estratégicos para crescimento sustentado.",
+    },
   ];
 
   return (
@@ -273,13 +316,11 @@ function Index() {
       {/* NAV */}
       <header className="relative z-20 px-6 md:px-10 py-6 flex items-center justify-between max-w-[1200px] mx-auto">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center">
-            <ApiceLogoIcon size={40} background="var(--bg-primary)" />
-          </div>
+          <SennoMark size={44} />
           <div className="leading-tight">
-            <div className="font-display text-xl tracking-wide">ÁPICE</div>
+            <div className="font-display text-xl tracking-wide">SENNO GROUP</div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)]">
-              Curitiba · PR
+              Ecossistema para clínicas
             </div>
           </div>
         </div>
@@ -287,7 +328,7 @@ function Index() {
           href="#diagnostico"
           className="hidden md:inline-flex items-center gap-2 text-sm border border-[var(--border)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors px-5 py-2.5 rounded-full"
         >
-          Diagnóstico gratuito
+          Diagnóstico estratégico
           <span className="text-[var(--gold)]">→</span>
         </a>
       </header>
@@ -300,20 +341,18 @@ function Index() {
               <GuaranteeBadge />
             </div>
             <h1 className="reveal text-5xl md:text-7xl lg:text-[5.5rem] mb-8" data-delay="120">
-              Sua clínica cresce
+              O ecossistema de
               <span className="block">
-                em
-                <span className="text-[var(--gold)] italic"> 90 </span>
-                dias.
+                crescimento das clínicas
+                <span className="text-[var(--gold)] italic"> de alto valor</span>.
               </span>
             </h1>
             <p
               className="reveal text-lg md:text-xl text-[var(--text-secondary)] max-w-xl leading-relaxed mb-10"
               data-delay="240"
             >
-              Desenvolvimento comercial para clínicas de estética em Curitiba e Região
-              Metropolitana. Diagnóstico, atendimento, automação e tráfego — operando como um único
-              sistema.
+              A SENNO GROUP integra estratégia, estrutura, performance e inteligência em um único
+              sistema — transformando clínicas em negócios previsíveis, lucrativos e escaláveis.
             </p>
             <div
               className="reveal flex flex-col sm:flex-row gap-4 items-start sm:items-center"
@@ -323,10 +362,12 @@ function Index() {
                 href="#diagnostico"
                 className="btn-cta inline-flex items-center justify-center gap-2 bg-[var(--gold)] text-[var(--bg-primary)] font-medium px-8 py-4 rounded-full hover:bg-[var(--gold-light)] transition-colors"
               >
-                Quero um diagnóstico gratuito
+                Solicitar diagnóstico estratégico
                 <span>→</span>
               </a>
-              <span className="text-sm text-[var(--text-muted)]">30 minutos · sem compromisso</span>
+              <span className="text-sm text-[var(--text-muted)]">
+                Conversa privada · sem compromisso
+              </span>
             </div>
           </div>
 
@@ -335,12 +376,14 @@ function Index() {
               <div className="absolute -inset-8 bg-[var(--gold-dim)] blur-3xl rounded-full opacity-60" />
               <div className="relative border border-[var(--border)] rounded-2xl bg-[var(--bg-secondary)]/80 backdrop-blur p-10 gold-glow">
                 <div className="text-xs uppercase tracking-[0.25em] text-[var(--text-muted)] mb-4">
-                  Resultado médio
+                  Impacto típico no portfólio
                 </div>
                 <div className="number-display text-7xl md:text-8xl text-[var(--gold-light)] mb-2">
                   +34%
                 </div>
-                <div className="text-[var(--text-secondary)] mb-8">faturamento em 90 dias</div>
+                <div className="text-[var(--text-secondary)] mb-8">
+                  crescimento de faturamento em 90 dias
+                </div>
                 <div className="gold-divider mb-8" />
                 <div className="grid grid-cols-2 gap-6">
                   <div>
@@ -373,16 +416,18 @@ function Index() {
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
             <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
-              01 · A situação
+              01 · O contexto
             </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
-              Se você se reconhece em algum desses cenários...
+              Clínicas de alto potencial, paradas no mesmo patamar.
             </h2>
             <p
               className="reveal text-lg text-[var(--text-secondary)] leading-relaxed"
               data-delay="200"
             >
-              Você não está sozinha. E não é falta de esforço — é falta de sistema.
+              Marketing sem processo não gera escala. Vendas sem gestão não geram previsibilidade.
+              Dados sem inteligência não geram decisão. O problema raramente é esforço — é ausência
+              de sistema.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -410,33 +455,34 @@ function Index() {
               02 · Posicionamento
             </p>
             <h2 className="reveal text-4xl md:text-5xl mb-6" data-delay="100">
-              Não somos uma agência genérica.
+              A SENNO não é uma agência.
             </h2>
             <p
               className="reveal text-lg text-[var(--text-secondary)] leading-relaxed"
               data-delay="200"
             >
-              Atuamos exclusivamente com clínicas de estética. É a única coisa que fazemos — e o
-              motivo pelo qual conseguimos garantir performance.
+              Somos um ecossistema de desenvolvimento empresarial para o mercado estético premium —
+              integrando comercial, performance, inteligência, operação e tecnologia em um único
+              sistema de crescimento.
             </p>
           </div>
           <div className="md:col-span-7 space-y-6">
             {[
               [
-                "Especialização absoluta",
-                "Só clínicas de estética. Nada mais. Conhecemos o ticket, o ciclo, a sazonalidade, o perfil da paciente.",
+                "Visão de ecossistema",
+                "Sete unidades operando de forma integrada — não serviços avulsos. Comercial, Performance, Intelligence, Care, Scale, Academy e Tech.",
               ],
               [
-                "Método integrado",
-                "Não é só tráfego. Não é só automação. É o conjunto operando como um único sistema comercial.",
+                "Método antes de execução",
+                "Diagnóstico, desenho de sistema e governança antes de qualquer ativação. Estratégia define ferramenta — nunca o contrário.",
               ],
               [
-                "Garantia de performance",
-                "Não entregou resultado em 90 dias? Não cobramos fee de performance. Sem letras miúdas.",
+                "Crescimento mensurável",
+                "Indicadores comerciais, financeiros e operacionais acompanhados em comitê. Resultado se prova em dado — não em narrativa.",
               ],
               [
-                "Presença local em Curitiba",
-                "Conhecemos o mercado, a concorrência e a paciente da Região Metropolitana.",
+                "Construção de patrimônio",
+                "Foco em estrutura, previsibilidade e valor de empresa no longo prazo. Não trabalhamos com lógica de lançamento ou tráfego avulso.",
               ],
             ].map(([t, d], i) => (
               <div
@@ -454,46 +500,25 @@ function Index() {
         </div>
       </section>
 
-      {/* PILARES */}
+      {/* PILARES / UNIDADES */}
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
             <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
-              03 · Entrega
+              03 · O ecossistema
             </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
-              Cinco pilares. <span className="italic text-[var(--gold)]">Um só sistema.</span>
+              Sete unidades. <span className="italic text-[var(--gold)]">Um só sistema.</span>
             </h2>
             <p className="reveal text-lg text-[var(--text-secondary)]" data-delay="200">
-              Cada peça resolve um problema específico — e juntas geram crescimento mensurável.
+              Cada unidade resolve uma camada do crescimento. Juntas, formam a infraestrutura
+              completa de uma clínica de alto valor.
             </p>
           </div>
-          <div className="grid md:grid-cols-6 gap-5">
-            <div className="md:col-span-2">
-              <PillarCard
-                {...{ num: pillars[0].n, title: pillars[0].t, desc: pillars[0].d, delay: 0 }}
-              />
-            </div>
-            <div className="md:col-span-2">
-              <PillarCard
-                {...{ num: pillars[1].n, title: pillars[1].t, desc: pillars[1].d, delay: 100 }}
-              />
-            </div>
-            <div className="md:col-span-2">
-              <PillarCard
-                {...{ num: pillars[2].n, title: pillars[2].t, desc: pillars[2].d, delay: 200 }}
-              />
-            </div>
-            <div className="md:col-span-3">
-              <PillarCard
-                {...{ num: pillars[3].n, title: pillars[3].t, desc: pillars[3].d, delay: 300 }}
-              />
-            </div>
-            <div className="md:col-span-3">
-              <PillarCard
-                {...{ num: pillars[4].n, title: pillars[4].t, desc: pillars[4].d, delay: 400 }}
-              />
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {pillars.map((p, i) => (
+              <PillarCard key={p.n} num={p.n} title={p.t} desc={p.d} delay={i * 100} />
+            ))}
           </div>
         </div>
       </section>
@@ -503,18 +528,18 @@ function Index() {
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
             <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
-              04 · Prova
+              04 · Indicadores
             </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
-              Clínicas reais em Curitiba.{" "}
-              <span className="italic text-[var(--gold)]">Dados reais.</span>
+              Crescimento que se prova em{" "}
+              <span className="italic text-[var(--gold)]">dados reais.</span>
             </h2>
             <p
               className="reveal text-[var(--text-secondary)] leading-relaxed text-lg"
               data-delay="200"
             >
-              Não divulgamos nomes por confidencialidade — mas conectamos você diretamente com
-              clientes para conversar sem filtro.
+              Os clientes da SENNO são tratados sob confidencialidade. Os números abaixo refletem o
+              movimento médio do portfólio após a implementação do sistema.
             </p>
           </div>
 
@@ -548,8 +573,8 @@ function Index() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              "Em 3 meses voltei a ter previsibilidade. Sei exatamente quanto vou faturar e por quê.",
-              "Resolvi o no-show, que era meu maior buraco. A diferença no caixa foi imediata.",
+              "Passamos a operar com previsibilidade. Cada decisão tem número por trás — não opinião.",
+              "A estrutura comercial e os dados mudaram o jogo. O crescimento virou consequência.",
             ].map((q, i) => (
               <div
                 key={q}
@@ -561,7 +586,7 @@ function Index() {
                   {q}
                 </p>
                 <p className="text-sm uppercase tracking-wider text-[var(--text-muted)]">
-                  — Dona de Clínica, Curitiba
+                  — Cliente SENNO · mercado estético premium
                 </p>
               </div>
             ))}
@@ -574,10 +599,10 @@ function Index() {
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl mb-16">
             <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
-              05 · Caminho
+              05 · Método
             </p>
             <h2 className="reveal text-4xl md:text-6xl" data-delay="100">
-              Como trabalhamos.
+              Como a SENNO opera.
             </h2>
           </div>
           <div className="grid md:grid-cols-4 gap-6 relative">
@@ -602,13 +627,13 @@ function Index() {
             <div className="text-[var(--gold)] text-sm uppercase tracking-[0.25em] mb-4">
               É para você
             </div>
-            <h3 className="text-3xl mb-8">A ÁPICE é para você se:</h3>
+            <h3 className="text-3xl mb-8">A SENNO é para clínicas que:</h3>
             <ul className="space-y-5">
               {[
-                "Sua clínica já funciona, mas o crescimento está travado",
-                "Você quer previsibilidade de receita, não resultado de sorte",
-                "Está disposta a implementar com seriedade",
-                "Quer dados concretos, não relatórios bonitos sem ação",
+                "Já operam com faturamento relevante e querem escalar com estrutura",
+                "Buscam previsibilidade comercial e construção de patrimônio empresarial",
+                "Estão dispostas a implementar método e governança com seriedade",
+                "Decidem por indicadores — não por percepção ou tendência",
               ].map((it) => (
                 <li key={it} className="flex gap-4 text-[var(--text-primary)]">
                   <span className="text-[var(--gold)] mt-1">✓</span>
@@ -624,12 +649,12 @@ function Index() {
             <div className="text-[var(--text-muted)] text-sm uppercase tracking-[0.25em] mb-4">
               Não é para você
             </div>
-            <h3 className="text-3xl mb-8 text-[var(--text-secondary)]">Não trabalhamos com:</h3>
+            <h3 className="text-3xl mb-8 text-[var(--text-secondary)]">Não atendemos:</h3>
             <ul className="space-y-5">
               {[
-                "Clínicas que estão começando do zero",
-                'Quem busca só "post bonito" sem estrutura comercial',
-                "Quem não quer envolver a equipe no processo",
+                "Operações em fase inicial, sem estrutura comercial mínima",
+                "Quem busca lançamento, hype ou promessa de enriquecimento rápido",
+                "Negócios sem disposição para envolver equipe, processos e dados",
               ].map((it) => (
                 <li key={it} className="flex gap-4 text-[var(--text-secondary)]">
                   <span className="text-[var(--text-muted)] mt-1">✕</span>
@@ -641,7 +666,7 @@ function Index() {
         </div>
       </section>
 
-      {/* GARANTIA */}
+      {/* MISSÃO / VISÃO */}
       <section className="relative z-10 px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-[1000px] mx-auto reveal">
           <div className="relative rounded-2xl border border-[var(--gold)] bg-gradient-to-br from-[var(--gold-dim)] to-transparent p-12 md:p-16 text-center overflow-hidden">
@@ -651,12 +676,12 @@ function Index() {
                 <GuaranteeBadge />
               </div>
               <p className="font-display text-3xl md:text-5xl leading-tight text-[var(--text-primary)] mb-6">
-                "Se você implementar o que estruturamos e não tiver resultado nos primeiros{" "}
-                <span className="text-[var(--gold)] italic">90 dias</span>, não cobramos fee de
-                performance."
+                Transformar clínicas em negócios{" "}
+                <span className="text-[var(--gold)] italic">lucrativos, previsíveis</span> e
+                escaláveis — através de estratégia, estrutura, performance e inteligência.
               </p>
               <p className="text-[var(--text-secondary)] text-lg">
-                Sem letras miúdas. Sem desculpas.
+                Construindo o maior ecossistema de desenvolvimento de clínicas da América Latina.
               </p>
             </div>
           </div>
@@ -671,14 +696,14 @@ function Index() {
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-12">
             <p className="reveal text-sm uppercase tracking-[0.25em] text-[var(--gold)] mb-6">
-              Diagnóstico gratuito
+              Diagnóstico estratégico
             </p>
             <h2 className="reveal text-4xl md:text-6xl mb-6" data-delay="100">
-              Quer saber onde está o <span className="italic text-[var(--gold)]">gargalo</span> da
-              sua clínica?
+              Mapeamos o <span className="italic text-[var(--gold)]">próximo patamar</span> da sua
+              clínica.
             </h2>
             <p className="reveal text-lg text-[var(--text-secondary)]" data-delay="200">
-              O diagnóstico é gratuito. Dura 30 minutos. Sem compromisso.
+              Conversa privada com a SENNO. Sem compromisso comercial.
             </p>
           </div>
 
@@ -707,7 +732,7 @@ function Index() {
                 </div>
                 <h3 className="text-3xl mb-4">Recebemos sua solicitação.</h3>
                 <p className="text-[var(--text-secondary)] text-lg">
-                  Em breve entraremos em contato pelo WhatsApp.
+                  A equipe SENNO entrará em contato em breve pelo WhatsApp.
                 </p>
               </div>
             ) : (
@@ -715,13 +740,13 @@ function Index() {
                 <div className="grid md:grid-cols-2 gap-5">
                   <Field label="Seu nome" name="name" required />
                   <Field label="Nome da clínica" name="clinic" required />
-                  <Field label="Cidade" name="city" required defaultValue="Curitiba" />
+                  <Field label="Cidade" name="city" required />
                   <Field
                     label="WhatsApp"
                     name="whatsapp"
                     type="tel"
                     required
-                    placeholder="(41) 9 9999-9999"
+                    placeholder="(00) 0 0000-0000"
                   />
                 </div>
                 <Field label="Faturamento mensal estimado (opcional)" name="revenue" />
@@ -735,11 +760,12 @@ function Index() {
                   disabled={loading}
                   className="btn-cta w-full inline-flex items-center justify-center gap-2 bg-[var(--gold)] text-[var(--bg-primary)] font-medium px-8 py-5 rounded-full hover:bg-[var(--gold-light)] transition-colors text-lg mt-4"
                 >
-                  {loading ? "Enviando..." : "Quero meu diagnóstico gratuito"}
+                  {loading ? "Enviando..." : "Solicitar diagnóstico estratégico"}
                   {!loading && <span>→</span>}
                 </button>
                 <p className="text-center text-sm text-[var(--text-muted)] pt-2">
-                  Atendemos um número limitado de clínicas por vez para garantir qualidade.
+                  Atendemos um número limitado de clínicas por ciclo para preservar qualidade e
+                  exclusividade.
                 </p>
               </form>
             )}
@@ -752,13 +778,11 @@ function Index() {
         <div className="max-w-[1200px] mx-auto grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <div className="flex items-center justify-center">
-                <ApiceLogoIcon size={40} background="var(--bg-primary)" />
-              </div>
-              <span className="font-display text-xl">ÁPICE</span>
+              <SennoMark size={44} />
+              <span className="font-display text-xl">SENNO GROUP</span>
             </div>
             <p className="text-sm text-[var(--text-secondary)] max-w-xs">
-              Desenvolvimento Comercial para Clínicas de Estética.
+              Ecossistema de desenvolvimento para clínicas de alto valor.
             </p>
           </div>
           <div className="text-sm text-[var(--text-secondary)] space-y-2">
@@ -766,21 +790,15 @@ function Index() {
               Contato
             </div>
             <a
-              href="https://instagram.com/apice.comercial"
-              className="block hover:text-[var(--gold)] transition-colors"
-            >
-              @apice.comercial
-            </a>
-            <a
               href="https://wa.me/554195173900"
               className="block hover:text-[var(--gold)] transition-colors"
             >
               WhatsApp · (41) 9 9517-3900
             </a>
-            <div>Curitiba, PR · Brasil</div>
+            <div>Brasil · América Latina</div>
           </div>
           <div className="text-sm text-[var(--text-muted)] md:text-right">
-            © 2025 ÁPICE.
+            © 2026 SENNO GROUP.
             <br />
             Todos os direitos reservados.
           </div>
@@ -792,14 +810,14 @@ function Index() {
         href="https://wa.me/554195173900"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Fale com a ÁPICE no WhatsApp"
+        aria-label="Fale com a SENNO GROUP no WhatsApp"
         className="group fixed bottom-6 right-6 z-[999] w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform"
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
           <path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.88 11.9L4 20l4.22-1.1a7.93 7.93 0 003.83.98h.01a7.94 7.94 0 005.54-13.56zm-5.55 12.2h-.01a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.65.67-2.44-.16-.25a6.59 6.59 0 1112.21-3.51 6.59 6.59 0 01-6.6 6.61zm3.62-4.94c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.45.1s-.51.65-.63.78c-.12.14-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.59-.53-.99-1.18-1.1-1.38-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.34.07-.14.03-.26-.02-.36-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34h-.39c-.13 0-.34.05-.52.25s-.69.67-.69 1.64.71 1.91.81 2.04c.1.14 1.4 2.13 3.39 2.99.47.2.84.33 1.13.42.47.15.91.13 1.25.08.38-.06 1.18-.48 1.34-.95.17-.46.17-.86.12-.94-.05-.08-.18-.13-.38-.23z" />
         </svg>
         <span className="absolute right-full mr-3 px-3 py-1.5 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] text-xs text-[var(--text-primary)] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-          Fale com a ÁPICE
+          Fale com a SENNO
         </span>
       </a>
     </div>
